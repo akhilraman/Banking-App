@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionDetailsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Transaction_Details_heading"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:background="#DAD3D3"
+            android:gravity="center"
+            android:text="Transaction Details"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/transid"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:text="Transaction id:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/sender_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:text="Sender"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/s_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/s_accno"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="TextView" />
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="145dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rightarrow"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/success_image"
+                    android:layout_width="58dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:alpha="1"
+                    android:src="@drawable/check" />
+
+                <ImageView
+                    android:id="@+id/fail_image"
+                    android:layout_width="58dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:alpha="1"
+                    android:src="@drawable/close" />
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="135dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:gravity="center"
+                    android:text="Reciever"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/r_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/r_accno"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="TextView" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/trans_amount"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:gravity="bottom"
+            android:text="Amount"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="bottom"
+            android:text="Date of Transaction "
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="331dp"
+        android:alpha="0.05"
+        android:src="@drawable/moneytransfer" />
+
+</FrameLayout>
