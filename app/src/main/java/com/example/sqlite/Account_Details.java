@@ -1,9 +1,12 @@
 package com.example.sqlite;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,13 +20,25 @@ public class Account_Details extends AppCompatActivity {
     String phoneno;
     int balance;
     String IFCcode;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_details);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_home_24);
         Intent intent = getIntent();
         user present = (user)intent.getSerializableExtra("uservalue");
-        Toast.makeText(this, present.getName(), Toast.LENGTH_SHORT).show();
 
         TextView uname=findViewById(R.id.accname);
         TextView accno_view=findViewById(R.id.accno);
@@ -43,15 +58,15 @@ public class Account_Details extends AppCompatActivity {
     }
 
     public void transact(View view){
-        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
         /*transaction_popup cp=new transaction_popup();
         cp.show(getSupportFragmentManager(), "this");*/
-        BottomFragment bottomFragment= new BottomFragment(username);
+        BottomFragment bottomFragment= new BottomFragment(username,balance,accno);
         bottomFragment.show(getSupportFragmentManager(), bottomFragment.getTag());
     }
 
     public void view_history(View view){
         Intent i = new Intent(getApplicationContext(),Transaction_history.class);
+        i.putExtra("source",username);
         startActivity(i);
     }
 }

@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import org.w3c.dom.Text;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link TransactionDetailsFragment#newInstance} factory method to
@@ -86,7 +88,6 @@ public class TransactionDetailsFragment extends BottomSheetDialogFragment {
         if(present_transaction.getStatus().equals("Success")){
             failed.setImageAlpha(0);
             Transaction_details_heading.setBackgroundColor(getResources().getColor(R.color.success_banner));
-            Toast.makeText(getContext(), "hellooo", Toast.LENGTH_SHORT).show();
             Animation animation= AnimationUtils.loadAnimation(getContext(),R.anim.fadein);
             success.startAnimation(animation);
         }
@@ -98,8 +99,19 @@ public class TransactionDetailsFragment extends BottomSheetDialogFragment {
         }
         TextView s_name=view.findViewById(R.id.s_name);
         TextView r_name=view.findViewById(R.id.r_name);
+        TextView trans_amount=view.findViewById(R.id.trans_amount);
+        TextView date_trans=view.findViewById(R.id.date_transaction);
+        TextView sender_accno_view=view.findViewById(R.id.s_accno);
+        TextView reciever_accno_view=view.findViewById(R.id.r_accno);
+        TextView trans_id=view.findViewById(R.id.transid);
         s_name.setText(present_transaction.getSender_name());
         r_name.setText(present_transaction.getReceiver_name());
+        sender_accno_view.setText(present_transaction.getSender_accno());
+        reciever_accno_view.setText(present_transaction.getReceiver_accno());
+        trans_amount.setText("Amount "+present_transaction.getAmount());
+        date_trans.setText("Date of Transaction "+present_transaction.getDate());
+        trans_id.setText("Transaction ID "+present_transaction.getTransaction_id());
+
 
     }
 }

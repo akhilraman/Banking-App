@@ -1,37 +1,49 @@
 package com.example.sqlite;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItem;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-ListView listview;
-ArrayList arrayList;
+public class Userlist extends AppCompatActivity {
+
+    ListView listview;
+    ArrayList arrayList;
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        return super.onOptionsItemSelected(item);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_page);
-        /*listview=findViewById(R.id.listview);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_home_24);
+        setContentView(R.layout.activity_main);
+        listview=findViewById(R.id.listview);
         arrayList = new ArrayList<user>();
         CustomRow adapter;
 
-
         SQLiteDatabase myDatabase=this.openOrCreateDatabase("user",MODE_PRIVATE,null);
-
         myDatabase.execSQL("CREATE TABLE IF NOT EXISTS user (name VARCHAR,accountno VARCHAR ,balance INT(25),IFCcode VARCHAR,phoneno VARCHAR,email VARCHAR)");
-         //myDatabase.execSQL("CREATE TABLE IF NOT EXISTS trans (sender VARCHAR, reciever VARCHAR,amount INT(3),status VARCHAR)");
-        myDatabase.execSQL("INSERT INTO user VALUES ('Akhil ','SFB200AR',20000,'5676','8939158281','akhilraman@gmail.com')");
+        //myDatabase.execSQL("CREATE TABLE IF NOT EXISTS trans (sender VARCHAR, reciever VARCHAR,amount INT(3),status VARCHAR)");
+        //myDatabase.execSQL("INSERT INTO user VALUES ('Akhil ','SFB200AR',20000,'5676','8939158281','akhilraman@gmail.com')");
         /*myDatabase.execSQL("INSERT INTO user VALUES ('S Raman ','SFB300SR',19000,'5634','9490470808','sraman@gmail.com')");
         myDatabase.execSQL("INSERT INTO user VALUES ('Shreya ','SFB200SHR',34000,'5611','8939158345','shreyaraman@gmail.com')");
         myDatabase.execSQL("INSERT INTO user VALUES ('Revanth ','SFB234RR',56000,'5233','95250233554 ','revanth@gmail.com')");
@@ -45,8 +57,9 @@ ArrayList arrayList;
         myDatabase.execSQL("INSERT INTO user VALUES ('Mohan ','SFB340MR',20000,'5992','8939158289','Mohan@gmail.com')");
         myDatabase.execSQL("INSERT INTO user VALUES ('Bhanu ','SFB100BP',40000,'2343','9939158281','bhanu123@gmail.com')");
         myDatabase.execSQL("INSERT INTO user VALUES ('Kalyan ','SFB200KK',20000,'1676','7939158281','kalyan@gmail.com')");
-        myDatabase.execSQL("INSERT INTO user VALUES ('Anu ','SFB200AA',50000,'9676','7739158281','anu@gmail.com')");
-        //myDatabase.execSQL("INSERT INTO user VALUES ('Shreya',90)");
+        myDatabase.execSQL("INSERT INTO user VALUES ('Anu ','SFB200AA',50000,'9676','7739158281','anu@gmail.com')");*/
+        //myDatabase.execSQL("DELETE FROM user WHERE name='Akhil '");
+        //myDatabase.execSQL("INSERT INTO user VALUES ('Akhil ','SFB200AR',20000,'5676','8939158281','akhilraman@gmail.com')");
         try (Cursor c = myDatabase.rawQuery("SELECT * FROM user", null)) {
             int nameIndex=c.getColumnIndex("name");
             int accnoIndex=c.getColumnIndex("accountno");
@@ -69,27 +82,11 @@ ArrayList arrayList;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 user present = (user)arrayList.get(position);
-                Toast.makeText(MainActivity.this, present.getName(), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getApplicationContext(),Account_Details.class);
                 i.putExtra("uservalue",present);
                 startActivity(i);
             }
-        });*/
+        });
 
-
-
-
-
-    }
-
-    public void user_list(View view){
-        Intent i = new Intent(getApplicationContext(),Userlist.class);
-        startActivity(i);
-    }
-
-    public void transactions(View view){
-        Intent i = new Intent(getApplicationContext(),Transaction_history.class);
-        i.putExtra("source","common");
-        startActivity(i);
     }
 }

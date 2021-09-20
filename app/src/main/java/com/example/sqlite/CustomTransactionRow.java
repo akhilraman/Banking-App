@@ -2,10 +2,12 @@ package com.example.sqlite;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,7 +40,7 @@ public class CustomTransactionRow extends ArrayAdapter<Transactions> {
         TextView reciever_name=currentItemView.findViewById(R.id.Reciever_name);
         TextView reciever_accno=currentItemView.findViewById(R.id.Reciever_accno);
         TextView status=currentItemView.findViewById(R.id.success_fail);
-        TextView amount=currentItemView.findViewById(R.id.amount);
+        TextView amount=currentItemView.findViewById(R.id.amount_view);
         // get the position of the view from the ArrayAdapter
         Transactions currentNumberPosition = getItem(position);
 
@@ -50,7 +52,10 @@ public class CustomTransactionRow extends ArrayAdapter<Transactions> {
         reciever_name.setText(currentNumberPosition.getReceiver_name());
         sender_accno.setText(currentNumberPosition.getSender_accno());
         reciever_accno.setText(currentNumberPosition.getReceiver_accno());
-        //amount.setText(currentNumberPosition.getAmount());
+        status.setText(currentNumberPosition.getStatus());
+        String amount_value=String.valueOf(currentNumberPosition.getAmount());
+        amount.setText(amount_value);
+
         //age.setText(currentNumberPosition.getAge());
 
         return currentItemView;

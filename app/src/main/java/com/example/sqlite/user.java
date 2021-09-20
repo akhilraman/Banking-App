@@ -21,6 +21,9 @@ public class user implements Serializable {
         this.phoneno=phoneno;
     }
 
+    public String toString(){
+        return this.name;
+    }
     public int getBalance() {
         return balance;
     }

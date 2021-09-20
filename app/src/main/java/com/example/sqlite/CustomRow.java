@@ -1,5 +1,6 @@
 package com.example.sqlite;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +56,15 @@ public class CustomRow extends ArrayAdapter<user> {
         username.setText(currentNumberPosition.getName());
         accno.setText(currentNumberPosition.getAccountno());
         //age.setText(currentNumberPosition.getAge());
+
+        Button transact_button=currentItemView.findViewById(R.id.transfer_button);
+        transact_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomFragment bottomFragment= new BottomFragment(currentNumberPosition.getName(),currentNumberPosition.getBalance(),currentNumberPosition.getAccountno());
+                bottomFragment.show(((FragmentActivity)getContext()).getSupportFragmentManager(), bottomFragment.getTag());
+            }
+        });
 
         return currentItemView;
     }

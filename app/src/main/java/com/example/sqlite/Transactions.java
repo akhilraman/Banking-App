@@ -3,25 +3,43 @@ package com.example.sqlite;
 import java.io.Serializable;
 
 public class Transactions implements Serializable {
-
+    String transaction_id;
     String sender_name;
     String receiver_name;
     String sender_accno;
     String receiver_accno;
-    String amount;
+    int amount;
     String status;
     String date;
 
-    public Transactions(String s,String r,String status){
+    public Transactions(String s,String r,String status,int amount,String date,String transaction_id,String sender_accno,String receiver_accno){
         sender_name=s;
         receiver_name=r;
         this.status=status;
+        this.date=date;
+        this.amount=amount;
+        this.transaction_id=transaction_id;
         this.sender_accno=sender_accno;
         this.receiver_accno=receiver_accno;
-        this.amount=amount;
     }
 
-    public String getAmount() {
+    public String getTransaction_id() {
+        return transaction_id;
+    }
+
+    public void setTransaction_id(String transaction_id) {
+        this.transaction_id = transaction_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getAmount() {
         return amount;
     }
 
@@ -45,7 +63,7 @@ public class Transactions implements Serializable {
         return status;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 
